@@ -1,0 +1,52 @@
+$color-scheme-override-root: 'html' !default;
+$dark-class: 'dark-mode' !default;
+$default-color-class: 'default-color-mode' !default;
+$light-class: 'light-mode' !default;
+$scrollbar-padding: 0px !default;
+$width-step: 160px !default;
+
+@mixin dark {
+  @media (prefers-color-scheme: dark) {
+    #{$color-scheme-override-root}:not(.#{$light-class}):not(.#{$default-color-class}) & {
+      @content;
+    }
+  }
+
+  #{$color-scheme-override-root}.#{$dark-class} & {
+    @content;
+  }
+}
+
+@mixin light {
+  @media (prefers-color-scheme: light) {
+    #{$color-scheme-override-root}:not(.#{$dark-class}):not(.#{$default-color-class}) & {
+      @content;
+    }
+  }
+
+  #{$color-scheme-override-root}.#{$light-class} & {
+    @content;
+  }
+}
+
+@mixin width ($multiple1, $multiple2: null) {
+  @if $multiple1 == 0 {
+    @if $multiple2 == null {
+      @media screen {
+        @content;
+      }
+    } @else {
+      @media only screen and (max-width: #{($width-step*$multiple2) - $scrollbar-padding}) {
+        @content;
+      }
+    }
+  } @else if $multiple2 == null {
+    @media only screen and (min-width: #{($width-step*$multiple1) + 1px - $scrollbar-padding}) {
+      @content;
+    }
+  } @else {
+    @media only screen and (min-width: #{($width-step*$multiple1) + 1px - $scrollbar-padding}) and (max-width: #{($width-step*$multiple2)-$scrollbar-padding}) {
+      @content;
+    }
+  }
+}

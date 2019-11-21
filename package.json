@@ -1,0 +1,26 @@
+{
+  "name": "@lamansky/mq",
+  "version": "1.0.0",
+  "description": "A library of media query mixins for Sass.",
+  "keywords": [
+    "sass",
+    "scss",
+    "mixins",
+    "library",
+    "color scheme",
+    "dark mode",
+    "light mode",
+    "test",
+    "viewport",
+    "width"
+  ],
+  "author": {
+    "name": "Fr. John Lamansky",
+    "url": "lamansky.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/lamansky/mq",
+  "repository": "lamansky/mq",
+  "main": "_index.scss",
+  "files": []
+}
